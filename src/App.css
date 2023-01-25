@@ -1,0 +1,94 @@
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  color: white;
+}
+
+
+
+h6{
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+}
+
+button {
+  background: none;
+  border: none;
+  color: whitesmoke;
+}
+
+.newIteminput {
+  padding: 0.2rem;
+  margin-right: 0.2rem;
+  font-size: 1rem;
+}
+.editIteminput {
+  padding: 0.2rem;
+  margin-right: 0.2rem;
+  font-size: 0.8rem;
+}
+
+#btn {
+  padding: 0.3rem;
+  margin: 0.1rem;
+}
+
+/* style for ToDo Item */
+
+.list-items {
+  margin: 0.2rem;
+  padding: 0.3rem;
+  justify-content: start;
+ 
+}
+
+.todo-text {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+
+.todo-text-strike {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.todo-edit {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0.2rem;
+  margin-right: 0.2rem;
+  font-size: 0.8rem;
+}
+
+.container{
+ 
+  width: 1em;
+  border-radius: 1.5rem;
+  margin: 2rem;
+  padding: 2rem;
+  background-color: rgb(190, 111, 46);
+  color: whitesmoke;
+}
+
+.col{
+  padding: 0.5rem;
+}
+
+.image-content {
+  background:url(./deskspace.png) no-repeat center ;
+  background-size: 325px;
+}
+
+.image{
+  border-radius: 1rem;
+  
+}
+
+.timestamp{
+  font-size: x-small;
+  opacity: 0.5;
+}
+
