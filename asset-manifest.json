@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/ToDoListApp/static/css/main.80bd4552.css",
+    "main.js": "/ToDoListApp/static/js/main.aafa3c9b.js",
+    "static/media/deskspace.png": "/ToDoListApp/static/media/deskspace.f9daffd86bb79acb6ad8.png",
+    "index.html": "/ToDoListApp/index.html",
+    "main.80bd4552.css.map": "/ToDoListApp/static/css/main.80bd4552.css.map",
+    "main.aafa3c9b.js.map": "/ToDoListApp/static/js/main.aafa3c9b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80bd4552.css",
+    "static/js/main.aafa3c9b.js"
+  ]
+}
