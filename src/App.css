@@ -1,57 +1,117 @@
 
-.App {
+body {
   font-family: sans-serif;
-  text-align: center;
-  color: white;
+  margin: 3rem;
+  padding: 3rem;
+  width: 700px;
 }
 
 
 
-h6{
-  display: flex;
-  justify-content: center;
-  color: whitesmoke;
+
+
+.container{
+  border-radius: 1.5rem;
+  padding: 3rem;
+  color: #D0D3DA;
+  background-color: #181B34;
+  font-size: medium;
 }
 
 button {
   background: none;
   border: none;
-  color: whitesmoke;
+  color: #D0D3DA;
+  
 }
 
-.newIteminput {
-  padding: 0.2rem;
-  margin-right: 0.2rem;
-  font-size: 1rem;
-}
-.editIteminput {
-  padding: 0.2rem;
-  margin-right: 0.2rem;
-  font-size: 0.8rem;
-}
-
-#btn {
-  padding: 0.3rem;
-  margin: 0.1rem;
-}
 
 /* style for ToDo Item */
 
+table {
+
+  border-radius: .3rem;
+
+}
+
+tr{
+
+}
+
+tbody{
+
+
+}
+
+.table-titles{
+  display: flex;
+  margin: 1rem;
+  justify-content: space-between;
+  font-size: small;
+  font-weight: bold;
+  border: none;
+}
+
+
+.table-items {
+  display:flex;
+}
 .list-items {
-  margin: 0.2rem;
-  padding: 0.3rem;
-  justify-content: start;
+margin: .3rem;
+padding: .3rem;
+border: .5px solid rgba(102, 104, 107, 0.5);
+
+}
+
+/* .list-items:hover{
+  transform: translateY(.1rem);
+} */
+
+.user{
+  background-color: #00C674;
+  margin: .3rem;
+  padding: .3rem;
+  font-size: small;
+}
+
+.status{
  
+  background-color: #E1445C;
+  margin: .5rem;
+  padding: .3rem;
+  font-size: small;
 }
 
-.todo-text {
-  font-size: 1rem;
-  padding: 0.5rem;
+
+
+.dropdown{
+  background: none;
+  border: none;
+  padding: auto;
+  width: 95px;
+  justify-content: flex-start;
 }
 
+.todo{
+  /* background-color: #FDAB3D; */
+  color:  #D0D3DA;
+  padding: .2rem;
+  width: 13rem;
+}
+
+#todo-checkbox{
+  margin-left: .5rem;
+  padding: .6rem;
+  background-color: none;
+  border: solid .5px #D0D3DA; 
+}
+.todo-text{
+  margin-left: 1rem ;
+  font-size: small;
+}
 
 .todo-text-strike {
-  text-decoration: line-through;
+  font-style: bold;
   opacity: 0.5;
 }
 
@@ -63,32 +123,19 @@ button {
   font-size: 0.8rem;
 }
 
-.container{
- 
-  width: 1em;
-  border-radius: 1.5rem;
-  margin: 2rem;
-  padding: 2rem;
-  background-color: rgb(190, 111, 46);
-  color: whitesmoke;
+.newIteminput {
+  width: 13rem;
+  padding: 0.2rem;
+  margin-right: 0.2rem;
+  margin-left: 2rem;
+  font-size: 1rem;
+}
+.editIteminput {
+  width: 13rem;
+  padding: 0.2rem;
+  margin-right: 0.2rem;
+  font-size: 0.8rem;
 }
 
-.col{
-  padding: 0.5rem;
-}
 
-.image-content {
-  background:url(./deskspace.png) no-repeat center ;
-  background-size: 325px;
-}
-
-.image{
-  border-radius: 1rem;
-  
-}
-
-.timestamp{
-  font-size: x-small;
-  opacity: 0.5;
-}
 

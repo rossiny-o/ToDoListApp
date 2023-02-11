@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
-// import image from "./deskspace.png";
-// import {Carous} from "react-bootstrap";
 
 function ToDoList() {
   const [items, setItems] = useState([]);
@@ -35,10 +33,6 @@ function ToDoList() {
     inputRef.current.focus();
   }
 
-  
-
-  console.log(`this is the items array: ${items.id} , ${items.text}`);
-
   // This is for the date
 
   const [date, setDate] = useState("");
@@ -63,7 +57,7 @@ function ToDoList() {
     const month = months[currentDate.getMonth()];
     const day = currentDate.getDate();
     const year = currentDate.getFullYear();
-    setDate(` Today is ${month} ${day}, ${year}!`);
+    setDate(`${month} ${day}, ${year}`);
   }, []);
 
   // This is the end of the date
@@ -78,17 +72,18 @@ function ToDoList() {
 
   return (
     <div className="container">
-      
       <div className="row">
-        <div className="col image-content">
-            {/* <img className="image" width={350} src={image} alt="todo-list-img" /> */}
-        </div>
-
         <div className="col">
+          <h5>
+            {date} | {time.toLocaleTimeString()}
+          </h5>
 
-          <h5>{date}</h5>
-          <h4>{time.toLocaleTimeString()}</h4>
           <hr />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col">
           <form onSubmit={handleSubmit}>
             <input
               name="item"
@@ -106,8 +101,18 @@ function ToDoList() {
             </button>
           </form>
           <hr />
-          <h6>-To Do-</h6>
-          <ul>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col">
+          {/* <table className="table-titles">
+            <th>-To Do-</th>
+            <th>-People-</th>
+            <th>-Status-</th>
+          </table> */}
+
+          <div>
             {items.map((item) => (
               <ToDoItem
                 key={item.id}
@@ -117,11 +122,10 @@ function ToDoList() {
                 onEdit={handleEdit}
               />
             ))}
-          </ul>
+          </div>
         </div>
+       
       </div>
-
-      
     </div>
   );
 }
@@ -140,6 +144,72 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
     setIsChecked(event.target.checked);
   }
 
+  function Table() {
+    return (
+      <table className="table-items list-items">
+        <tbody>
+          <tr>
+            <td className="todo">
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleChange}
+                id="todo-checkbox"
+              />
+
+              <span className="todo-text" onClick={() => setIsEditing(true)}>
+                {text}
+              </span>
+              {/* <h6 className="timestamp">{time}</h6> */}
+            </td>
+
+            <td className="user">
+              <label for="dropdown">
+                <select className="dropdown">
+                  {users.map((user) => (
+                    <option>{user.name}</option>
+                  ))}
+                </select>
+              </label>
+            </td>
+
+            <td className="status">
+              <label for="dropdown">
+                <select className="dropdown">
+                  {status.map((status) => (
+                    <option>{status.state}</option>
+                  ))}
+                </select>
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
+
+  const users = [
+    { id: 1, name: "Myself" },
+    { id: 2, name: "John Doe", email: "johndoe@example.com" },
+    { id: 3, name: "Jane Doe", email: "janedoe@example.com" },
+    { id: 4, name: "Jim Smith", email: "jimsmith@example.com" },
+    { id: 5, name: "Alice Johnson", email: "alicejohnson@example.com" },
+    { id: 6, name: "Bob Williams", email: "bobwilliams@example.com" },
+    { id: 7, name: "Carol Davis", email: "caroldavis@example.com" },
+    { id: 8, name: "David Brown", email: "davidbrown@example.com" },
+    { id: 9, name: "Emily Wilson", email: "emilywilson@example.com" },
+    { id: 10, name: "Frank Taylor", email: "franktaylor@example.com" },
+    { id: 11, name: "Grace Lee", email: "gracelee@example.com" },
+    { id: 12, name: "Henry Clark", email: "henryclark@example.com" },
+    { id: 13, name: "Isabel Martinez", email: "isabelmartinez@example.com" },
+  ];
+
+  const status = [
+    { id: 1, state: "Not Started" },
+    { id: 2, state: "In Progress" },
+    { id: 3, state: "Done" },
+  ];
+
   if (isEditing) {
     return (
       <div className="todo-edit">
@@ -156,16 +226,9 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
   }
 
   return (
-    <ul className="list-items">
-      <label htmlFor="checkbox" className={isChecked ? "todo-text-strike" : ""}>
-        <input type="checkbox" checked={isChecked} onChange={handleChange} />
-
-        <span className="todo-text" onClick={() => setIsEditing(true)}>
-          {text}
-        </span>
-        {/* <h6 className="timestamp">{time}</h6> */}
-      </label>
-    </ul>
+    <label htmlFor="checkbox" className={isChecked ? "todo-text-strike" : ""}>
+      <Table />
+    </label>
   );
 
   // test extra code
