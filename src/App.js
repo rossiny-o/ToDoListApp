@@ -84,7 +84,7 @@ function ToDoList() {
 
       <div className="row">
         <div className="col">
-          <form onSubmit={handleSubmit}>
+          <form className="add-todo-form" onSubmit={handleSubmit}>
             <input
               name="item"
               placeholder="New Todo... "
@@ -93,12 +93,14 @@ function ToDoList() {
               ref={inputRef}
               value={inputValue}
             />
-            <button id="btn" type="submit" disabled={!inputValue}>
-              Add
-            </button>
-            <button id="btn" onClick={handleClear}>
-              Clear List
-            </button>
+            <div className="buttongroup">
+              <button id="btn" type="submit" disabled={!inputValue}>
+                Add
+              </button>
+              <button id="btn" onClick={handleClear}>
+                Clear List
+              </button>
+            </div>
           </form>
           <hr />
         </div>
@@ -124,7 +126,6 @@ function ToDoList() {
             ))}
           </div>
         </div>
-       
       </div>
     </div>
   );
@@ -146,9 +147,8 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
 
   function Table() {
     return (
-      <table className="table-items list-items">
-        <tbody>
-          <tr>
+      <table>
+          <tbody>
             <td className="todo">
               <input
                 type="checkbox"
@@ -171,9 +171,7 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
                   ))}
                 </select>
               </label>
-            </td>
 
-            <td className="status">
               <label for="dropdown">
                 <select className="dropdown">
                   {status.map((status) => (
@@ -182,8 +180,9 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
                 </select>
               </label>
             </td>
-          </tr>
-        </tbody>
+
+            
+          </tbody>
       </table>
     );
   }
@@ -226,9 +225,12 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
   }
 
   return (
+    <div className="todo-table-grid">
     <label htmlFor="checkbox" className={isChecked ? "todo-text-strike" : ""}>
       <Table />
     </label>
+
+    </div>
   );
 
   // test extra code
