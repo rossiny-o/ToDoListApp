@@ -147,8 +147,8 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
 
   function Table() {
     return (
-      <table>
-          <tbody>
+      <div className="table">
+          
             <td className="todo">
               <input
                 type="checkbox"
@@ -182,8 +182,8 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
             </td>
 
             
-          </tbody>
-      </table>
+         
+      </div>
     );
   }
 

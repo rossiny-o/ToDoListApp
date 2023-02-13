@@ -23,46 +23,24 @@
 .todo-table-grid{
   display:flex;
   justify-content: center;
-  outline: 1px solid rgb(220, 22, 22);
-  margin: .3rem;
-  padding: .3rem;
+  outline: 2px solid rgb(220, 22, 22);
+  margin: 1rem;
   
 }
 
-table {
-background: rgb(206, 206, 206); 
-width: 13;
-  
+.table {
+  outline: 2px dashed rgb(35, 22, 220);
   }
-
-tr{
-  outline: 3px solid darkblue;
-  padding: .5rem;
-}
-
-td{
-  outline: 2px dashed green;
-  
-}
 
 
 .todo{
-  padding-right: 1em;
+ padding-right: 1em;
+ background-color: aquamarine;
 }
 
-.user{
+.user, .status{
   font-size: small;
-  display: flex;
-  
   /* outline: 1px dashed rgb(139, 0, 51); */
-}
-
-.dropdown{
-
-  background: transparent;
-  padding: .3rem;
-  /* border: none; */
-  /* width: 95px; */
 }
 
 .buttongroup{
@@ -93,9 +71,7 @@ button {
   font-size: medium;
   outline: 3px solid rgba(238, 24, 24, 0.322);
   margin: 2rem;
-  /* border-radius: 1.5rem;
-  color: #D0D3DA;
-   */
+
 }
 
 
@@ -116,13 +92,13 @@ button {
 
 
 
-
 #todo-checkbox{
-  margin-left: .2rem;
+  margin: .2rem;
+  margin-right: .5rem;
   background-color: transparent;
 }
 .todo-text{
-  margin-left: .5rem ;
+ 
   font-size: small;
   color: black;
   font-weight: bold;
