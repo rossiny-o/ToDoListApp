@@ -1,112 +1,96 @@
+* {
+	/* background-color: rgba(0, 198, 69, 0.1); */
+	border: none;
+}
+
+.container {
+	/* outline: 3px solid rgba(238, 24, 24, 0.322); */
+	margin: 2rem;
+	padding: 1rem;
+	background-color: rgba(238, 24, 24, 0.1);
+}
 
 
-*{
+/* start of second row: Input form for new todo */
+
+.add-todo-form {
+	outline: 0.5px solid red;
+	padding: 0.2rem;
+	display: flex;
+	flex-direction: row;
+  justify-content:inherit;
  
-  /* background-color: rgba(0, 198, 69, 0.1); */
-  border: none;
 }
 
-.add-todo-form{
+.todo-input-form {
+	outline: 1px solid black;
+	width: 350px;
+	margin-right: 1rem;
+	padding: 0.5rem;
+	font-size: 0.8rem;
+}
+
+.buttongroup {
+	/* outline: 2px dashed rgb(35, 22, 220); */
   display: flex;
+  align-items: center;
+ 
 
 }
 
-
-.newIteminput {
-  outline: 1px solid black;
-  width: 350px;
-  margin-right: 1rem;
-  padding: 0.5rem;
-  font-size: .8rem;
+.todo-input-form button {
+  outline: 1px solid rgba(2, 0, 2, 0.597);
 }
 
-.todo-table-grid{
-  display:flex;
-  justify-content: center;
-  outline: 2px solid rgb(220, 22, 22);
-  margin: 1rem;
-  
+/* end of second row */
+
+
+
+
+.todo-table-grid {
+	display: flex;
+	justify-content: center;
+	outline: 2px solid rgb(220, 22, 22);
+	margin: 1rem;
 }
 
 .table {
-  outline: 2px dashed rgb(35, 22, 220);
-  }
-
-
-.todo{
- padding-right: 1em;
- background-color: aquamarine;
+	outline: 2px dashed rgb(35, 22, 220);
 }
 
-.user, .status{
-  font-size: small;
-  /* outline: 1px dashed rgb(139, 0, 51); */
+.todo {
+	padding-right: 1em;
+	background-color: aquamarine;
 }
 
-.buttongroup{
-  display: flex;
-  padding: .3rem;
-  margin: .3rem;
-  justify-content: space-around;
-  outline: 2px dashed rgb(35, 22, 220);
+.user,
+.status {
+	font-size: small;
+	/* outline: 1px dashed rgb(139, 0, 51); */
 }
-
-button {
-  background-color:white;
-  color: black;
-  border-radius: 1rem;
-  outline: 1px solid rgba(2, 0, 2, 0.597);
-  /* color: #D0D3DA; */
-  
-}
-
-
-
-
-
 
 /* --------- --------- --------- --------- --------- --------- --------- --------- */
 
-.container{
-  font-size: medium;
-  outline: 3px solid rgba(238, 24, 24, 0.322);
-  margin: 2rem;
-
-}
-
-
 /* style for ToDo Item */
-
-
-
-
 
 /* .list-items:hover{
   transform: translateY(.1rem);
 } */
 
-
-
-
-
-
-
-
-#todo-checkbox{
-  margin: .2rem;
-  margin-right: .5rem;
-  background-color: transparent;
+#todo-checkbox {
+	margin: 0.2rem;
+	margin-right: 0.5rem;
+	background-color: transparent;
 }
-.todo-text{
- 
-  font-size: small;
-  color: black;
-  font-weight: bold;
+.todo-text {
+	font-size: small;
+	color: black;
+	font-weight: bold;
 }
 
 .todo-text-strike {
-  font-style: bold;
-  opacity: 0.5;
+	font-style: bold;
+	opacity: 0.5;
 }
 
 /* .todo-edit {
@@ -118,11 +102,8 @@ button {
 } */
 
 .editIteminput {
-  width: 13rem;
-  padding: 0.2rem;
-  margin-right: 0.2rem;
-  font-size: 0.8rem;
+	width: 13rem;
+	padding: 0.2rem;
+	margin-right: 0.2rem;
+	font-size: 0.8rem;
 }
-
-
-
