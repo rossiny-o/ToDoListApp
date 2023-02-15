@@ -1,31 +1,43 @@
 * {
 	/* background-color: rgba(0, 198, 69, 0.1); */
-	border: none;
+  border: none;
+  outline: none;
 }
+
+body{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  min-height: 40vh;
+}
+
 
 .container {
 	/* outline: 3px solid rgba(238, 24, 24, 0.322); */
-	margin: 2rem;
-	padding: 1rem;
+	
+	padding: 1em;
 	background-color: rgba(238, 24, 24, 0.1);
+  border-radius: 20px;
 }
 
 
 /* start of second row: Input form for new todo */
 
 .add-todo-form {
-	outline: 0.5px solid red;
-	padding: 0.2rem;
+	/* outline: 0.5px solid red; */
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
 	display: flex;
 	flex-direction: row;
-  justify-content:inherit;
+ 
  
 }
 
 .todo-input-form {
 	outline: 1px solid black;
 	width: 350px;
-	margin-right: 1rem;
+  margin-left: 0.5rem;
+	margin-right: 0.5rem;
 	padding: 0.5rem;
 	font-size: 0.8rem;
 }
@@ -34,28 +46,36 @@
 	/* outline: 2px dashed rgb(35, 22, 220); */
   display: flex;
   align-items: center;
+  justify-content: space-between;
  
 
 }
 
-.todo-input-form button {
-  outline: 1px solid rgba(2, 0, 2, 0.597);
+button {
+  background-color:transparent;
+  border-radius: 1rem;
+  padding: 0.2rem 0.6rem;
+
 }
 
 /* end of second row */
 
-
+.k{
+  background: rgba(128, 255, 0, 0.494);
+  margin: 1rem;
+}
 
 
 .todo-table-grid {
 	display: flex;
 	justify-content: center;
-	outline: 2px solid rgb(220, 22, 22);
-	margin: 1rem;
+	outline: 1px solid rgb(220, 22, 22);
+	margin: .5rem;
+ 
 }
 
 .table {
-	outline: 2px dashed rgb(35, 22, 220);
+	outline: 1px dashed rgb(35, 22, 220);
 }
 
 .todo {

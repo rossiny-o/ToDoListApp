@@ -96,7 +96,7 @@ function ToDoList() {
 						
 							<button id="btn" type="submit" disabled={!inputValue}>
 								Add
-							</button>
+							</button>&nbsp;&nbsp;
 							<button id="btn" onClick={handleClear}>
 								Clear List
 							</button>
@@ -107,7 +107,7 @@ function ToDoList() {
 			</div>
 
 			<div className="row">
-				<div className="col">
+				<div className="col k">
 					{/* <table className="table-titles">
             <th>-To Do-</th>
             <th>-People-</th>
