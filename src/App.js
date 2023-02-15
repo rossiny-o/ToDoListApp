@@ -74,9 +74,9 @@ function ToDoList() {
 		<div className="container">
 			<div className="row">
 				<div className="col">
-					<h5>
+					<h3>
 						{date} | {time.toLocaleTimeString()}
-					</h5>
+					</h3>
 
 					<hr />
 				</div>
@@ -87,32 +87,27 @@ function ToDoList() {
 					<form className="add-todo-form" onSubmit={handleSubmit}>
 						<input
 							name="item"
-							placeholder="New Todo... "
+							placeholder=" Add new to do... "
 							className="todo-input-form"
 							onChange={(e) => setInputValue(e.target.value)}
 							ref={inputRef}
 							value={inputValue}
 						/>
-						
-							<button id="btn" type="submit" disabled={!inputValue}>
-								Add
-							</button>&nbsp;&nbsp;
-							<button id="btn" onClick={handleClear}>
-								Clear List
-							</button>
-						
+						<button id="btn" type="submit" disabled={!inputValue}>
+							Add
+						</button>
+						&nbsp;&nbsp;
+						<button id="btn" onClick={handleClear}>
+							Clear List
+						</button>
 					</form>
 					<hr />
 				</div>
 			</div>
 
 			<div className="row">
-				<div className="col k">
-					{/* <table className="table-titles">
-            <th>-To Do-</th>
-            <th>-People-</th>
-            <th>-Status-</th>
-            </table> */}
+				<div className="col todo-section">
+					<h3>To Do</h3>
 					{items.map((item) => (
 						<ToDoItem
 							key={item.id}
@@ -145,14 +140,15 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
 	function Table() {
 		return (
 			<div className="table">
+        <th>
+        <input
+					type="checkbox"
+					checked={isChecked}
+					onChange={handleChange}
+					id="todo-checkbox"
+				/>
+        </th>
 				<td className="todo">
-					<input
-						type="checkbox"
-						checked={isChecked}
-						onChange={handleChange}
-						id="todo-checkbox"
-					/>
-
 					<span className="todo-text" onClick={() => setIsEditing(true)}>
 						{text}
 					</span>
@@ -160,18 +156,18 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
 				</td>
 
 				<td className="user">
-					<label for="dropdown">
+					<label>
 						<select className="dropdown">
 							{users.map((user) => (
-								<option>{user.name}</option>
+								<option key={user.id} value={user.name}>{user.name}</option>
 							))}
 						</select>
-					</label>
+					</label>&nbsp;&nbsp;
 
-					<label for="dropdown">
+					<label>
 						<select className="dropdown">
 							{status.map((status) => (
-								<option>{status.state}</option>
+								<option key={status.id} value={status.state}>{status.state}</option>
 							))}
 						</select>
 					</label>
@@ -181,19 +177,19 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
 	}
 
 	const users = [
-		{ id: 1, name: "Myself" },
-		{ id: 2, name: "John Doe", email: "johndoe@example.com" },
-		{ id: 3, name: "Jane Doe", email: "janedoe@example.com" },
-		{ id: 4, name: "Jim Smith", email: "jimsmith@example.com" },
-		{ id: 5, name: "Alice Johnson", email: "alicejohnson@example.com" },
-		{ id: 6, name: "Bob Williams", email: "bobwilliams@example.com" },
-		{ id: 7, name: "Carol Davis", email: "caroldavis@example.com" },
-		{ id: 8, name: "David Brown", email: "davidbrown@example.com" },
-		{ id: 9, name: "Emily Wilson", email: "emilywilson@example.com" },
-		{ id: 10, name: "Frank Taylor", email: "franktaylor@example.com" },
-		{ id: 11, name: "Grace Lee", email: "gracelee@example.com" },
-		{ id: 12, name: "Henry Clark", email: "henryclark@example.com" },
-		{ id: 13, name: "Isabel Martinez", email: "isabelmartinez@example.com" },
+	
+		{ id: 1, name: "John Doe", email: "johndoe@example.com" },
+		{ id: 2, name: "Jane Doe", email: "janedoe@example.com" },
+		{ id: 3, name: "Jim Smith", email: "jimsmith@example.com" },
+		{ id: 4, name: "Alice Johnson", email: "alicejohnson@example.com" },
+		{ id: 5, name: "Bob Williams", email: "bobwilliams@example.com" },
+		{ id: 6, name: "Carol Davis", email: "caroldavis@example.com" },
+		{ id: 7, name: "David Brown", email: "davidbrown@example.com" },
+		{ id: 8, name: "Emily Wilson", email: "emilywilson@example.com" },
+		{ id: 9, name: "Frank Taylor", email: "franktaylor@example.com" },
+		{ id: 10, name: "Grace Lee", email: "gracelee@example.com" },
+		{ id: 11, name: "Henry Clark", email: "henryclark@example.com" },
+		{ id: 12, name: "Isabel Martinez", email: "isabelmartinez@example.com" },
 	];
 
 	const status = [
@@ -202,8 +198,16 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
 		{ id: 3, state: "Done" },
 	];
 
+  useEffect(() => {
+    console.table(users);
+    console.table(status);
+  }, []);
+
+ 
+
 	if (isEditing) {
 		return (
+      <div className="todo-table-grid">
 			<div className="todo-edit">
 				<input
 					className="editIteminput"
@@ -214,6 +218,7 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
 				{"  "}
 				<button onClick={() => onDelete(id)}>Delete</button>
 			</div>
+      </div>
 		);
 	}
 

@@ -5,19 +5,22 @@
 }
 
 body{
+  margin-top: 1rem;
   display: flex;
   align-items:center;
   justify-content: center;
-  min-height: 40vh;
+  min-height: 60vh;
+  
 }
 
 
 .container {
-	/* outline: 3px solid rgba(238, 24, 24, 0.322); */
-	
 	padding: 1em;
-	background-color: rgba(238, 24, 24, 0.1);
+	background-color:none;
+  border: 3px dashed black;
   border-radius: 20px;
+  color: black;
+  
 }
 
 
@@ -46,61 +49,76 @@ body{
 	/* outline: 2px dashed rgb(35, 22, 220); */
   display: flex;
   align-items: center;
-  justify-content: space-between;
- 
-
 }
 
 button {
   background-color:transparent;
-  border-radius: 1rem;
-  padding: 0.2rem 0.6rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px dashed;
 
 }
 
 /* end of second row */
 
-.k{
-  background: rgba(128, 255, 0, 0.494);
+/* start of 3rd row */
+
+h3{
+  display:flex;
+  justify-content: center;
+}
+
+.todo-section{
+  background: rgba(128, 255, 0, 0.312);
   margin: 1rem;
+  padding: 1rem;
 }
 
 
 .todo-table-grid {
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 	outline: 1px solid rgb(220, 22, 22);
-	margin: .5rem;
+  background-color: white;
+  border-radius: 2rem;
+  margin-bottom: 0.5rem;
  
 }
 
 .table {
+  display: flex;
+  margin-top: 1rem;
+  margin-left: 1rem;
 	outline: 1px dashed rgb(35, 22, 220);
 }
 
 .todo {
 	padding-right: 1em;
-	background-color: aquamarine;
+	/* background-color: aquamarine; */
+  align-items: center;
 }
 
-.user,
-.status {
-	font-size: small;
-	/* outline: 1px dashed rgb(139, 0, 51); */
+.user {
+ 
+	/* font-size: small; */
+	/* background-color: rgba(  139, 0, 51, 0.337); */
 }
 
-/* --------- --------- --------- --------- --------- --------- --------- --------- */
+.dropdown{
+  font-size: small;
+  z-index: 100;
+  outline: 0.3px solid brown;
+  padding: 0.5rem 1rem;
 
-/* style for ToDo Item */
+}
 
-/* .list-items:hover{
-  transform: translateY(.1rem);
-} */
 
 #todo-checkbox {
-	margin: 0.2rem;
-	margin-right: 0.5rem;
-	background-color: transparent;
+  width: 15px;
+  height: 15px;
+  margin-top: 10px;
+	margin-right: 1rem;
+	background-color: red;
+  outline: 1px solid rgb(220, 22, 22);
 }
 .todo-text {
 	font-size: small;
@@ -112,6 +130,14 @@ button {
 	font-style: bold;
 	opacity: 0.5;
 }
+
+/* --------- --------- --------- --------- --------- --------- --------- --------- */
+
+/* style for ToDo Item */
+
+/* .list-items:hover{
+  transform: translateY(.1rem);
+} */
 
 /* .todo-edit {
   display: flex;
