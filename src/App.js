@@ -153,7 +153,7 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
 						{text}
 					</span>
 					{/* <h6 className="timestamp">{time}</h6> */}
-				</td>
+				</td>&nbsp;&nbsp;
 
 				<td className="user">
 					<label>
@@ -223,7 +223,7 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
 	}
 
 	return (
-		<div className="todo-table-grid">
+		<div className="todo-tablegrid">
 			<label htmlFor="checkbox" className={isChecked ? "todo-text-strike" : ""}>
 				<Table />
 			</label>

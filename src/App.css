@@ -68,7 +68,8 @@ h3{
 }
 
 .todo-section{
-  background: rgba(128, 255, 0, 0.312);
+  /* background: rgba(128, 255, 0, 0.312); */
+  border: 2px dashed black;
   margin: 1rem;
   padding: 1rem;
 }
@@ -80,19 +81,20 @@ h3{
 	outline: 1px solid rgb(220, 22, 22);
   background-color: white;
   border-radius: 2rem;
-  margin-bottom: 0.5rem;
  
 }
 
 .table {
   display: flex;
-  margin-top: 1rem;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 	outline: 1px dashed rgb(35, 22, 220);
+  padding: .4rem;
 }
 
 .todo {
 	padding-right: 1em;
+  outline: 0.3px solid brown;
+  margin-right: auto;
 	/* background-color: aquamarine; */
   align-items: center;
 }
