@@ -3,8 +3,12 @@ body{
   display: flex;
   align-items:center;
   justify-content: center;
-  min-height: 60vh;
+  min-height: 100vh;
   
+}
+
+*{
+  outline: 1px dashed red;
 }
 
 
@@ -124,6 +128,11 @@ h3{
 .todo-text-strike {
 	font-style: bold;
 	opacity: 0.5;
+}
+
+select{
+  z-index: 100;
+  
 }
 
 /* --------- --------- --------- --------- --------- --------- --------- --------- */

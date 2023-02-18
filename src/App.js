@@ -146,8 +146,6 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
   const [newText, setNewText] = useState(text);
   const [isChecked, setIsChecked] = useState(false);
 
-  
-
   function handleSave() {
     onEdit(id, newText);
     setIsEditing(false);
@@ -172,57 +170,65 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
     }
 
     return (
-      <table className="table">
-        <th>
+      <div className="table">
+        <div>
           <input
             type="checkbox"
             checked={isChecked}
             onChange={handleChange}
             id="todo-checkbox"
           />
-        </th>
-        <td className="todo">
+        </div>
+        <div className="todo">
           <span className="todo-text" onClick={() => setIsEditing(true)}>
             {text}
           </span>
-        </td>
+        </div>
         &nbsp;&nbsp;
-        <label htmlFor="dropdown1">
-          <select
-            value={selectedUser}
-            onChange={handleUserSelectChange}
-            className="dropdown1"
-          >
-            <option value="">Select user...</option>
-            {users.map((user) => (
-              <option key={user.id} value={user.name}>
-                {user.name}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div>
+          <label htmlFor="dropdown1">
+            <select
+              value={selectedUser}
+              onChange={handleUserSelectChange}
+              className="dropdown1"
+            >
+              <option value="">Select user...</option>
+              {users.map((user) => (
+                <option key={user.id} value={user.name}>
+                  {user.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
         &nbsp;&nbsp;
-        <label htmlFor="dropdown2">
-          <select
-            value={selectedStatus}
-            onChange={handleStatusSelectChange}
-            className="dropdown2"
-          >
-            <option value="">Select status...</option>
-            {status.map((status) => (
-              <option key={status.id}>{status.state}</option>
-            ))}
-          </select>
-        </label>
+        <div>
+          <label htmlFor="dropdown2">
+            <select
+              value={selectedStatus}
+              onChange={handleStatusSelectChange}
+              className="dropdown2"
+            >
+              <option value="">Select status...</option>
+              {status.map((status) => (
+                <option key={status.id} value={status.state}>
+                  {status.state}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
         &nbsp;&nbsp;
-        {isEditing ? (
-          <button onClick={handleSave}>Save</button>
-        ) : (
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-        )}
-        &nbsp;&nbsp;
-        <button onClick={() => onDelete(id)}>Delete</button>
-      </table>
+        <div>
+          {isEditing ? (
+            <button onClick={handleSave}>Save</button>
+          ) : (
+            <button onClick={() => setIsEditing(true)}>Edit</button>
+          )}
+          &nbsp;&nbsp;
+          <button onClick={() => onDelete(id)}>Delete</button>
+        </div>
+      </div>
     );
   }
 
