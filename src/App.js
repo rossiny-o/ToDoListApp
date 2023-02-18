@@ -2,235 +2,275 @@ import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 function ToDoList() {
-	const [items, setItems] = useState([]);
-	const [inputValue, setInputValue] = useState("");
-	const inputRef = useRef(null);
+  const [items, setItems] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const inputRef = useRef(null);
 
-	function handleDelete(id) {
-		setItems(items.filter((item) => item.id !== id));
-	}
+  // this will store data in session storage
 
-	function handleClear(event) {
-		event.preventDefault();
-		setItems([]);
-	}
+  useEffect(() => {
+    // Retrieve the data from sessionStorage and update the state
+    const savedInputValue = sessionStorage.getItem("inputValue");
+    if (savedInputValue) {
+      setInputValue(savedInputValue);
+    }
+  }, []);
 
-	function handleEdit(id, newText) {
-		setItems(
-			items.map((item) => {
-				if (item.id === id) {
-					return { ...item, text: newText };
-				}
-				return item;
-			})
-		);
-	}
+  useEffect(() => {
+    // Store the data in sessionStorage whenever the inputValue changes
+    sessionStorage.setItem("inputValue", inputValue);
+  }, [inputValue]);
 
-	function handleSubmit(event) {
-		setItems([...items, { id: Date.now(), text: event.target.item.value }]);
-		event.preventDefault();
-		setInputValue("");
-		inputRef.current.focus();
-	}
+  //   end of storing data in session storage
 
-	// This is for the date
+  function handleDelete(id) {
+    setItems(items.filter((item) => item.id !== id));
+  }
 
-	const [date, setDate] = useState("");
-	const [time, setTime] = useState(new Date());
+  function handleClear(event) {
+    event.preventDefault();
+    setItems([]);
+  }
 
-	useEffect(() => {
-		const months = [
-			"January",
-			"February",
-			"March",
-			"April",
-			"May",
-			"June",
-			"July",
-			"August",
-			"September",
-			"October",
-			"November",
-			"December",
-		];
-		const currentDate = new Date();
-		const month = months[currentDate.getMonth()];
-		const day = currentDate.getDate();
-		const year = currentDate.getFullYear();
-		setDate(`${month} ${day}, ${year}`);
-	}, []);
+  function handleEdit(id, newText) {
+    setItems(
+      items.map((item) => {
+        if (item.id === id) {
+          return { ...item, text: newText };
+        }
+        return item;
+      })
+    );
+  }
 
-	// This is the end of the date
-	// This  is the start of the time code
-	useEffect(() => {
-		const intervalId = setInterval(() => {
-			setTime(new Date());
-		}, 1000);
-		return () => clearInterval(intervalId);
-	}, []);
-	// This  is the end of the time code
+  function handleSubmit(event) {
+    setItems([...items, { id: Date.now(), text: event.target.item.value }]);
+    event.preventDefault();
+    setInputValue("");
+    inputRef.current.focus();
+  }
 
-	return (
-		<div className="container">
-			<div className="row">
-				<div className="col">
-					<h3>
-						{date} | {time.toLocaleTimeString()}
-					</h3>
+  // This is for the date
 
-					<hr />
-				</div>
-			</div>
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState(new Date());
 
-			<div className="row">
-				<div className="col">
-					<form className="add-todo-form" onSubmit={handleSubmit}>
-						<input
-							name="item"
-							placeholder=" Add new to do... "
-							className="todo-input-form"
-							onChange={(e) => setInputValue(e.target.value)}
-							ref={inputRef}
-							value={inputValue}
-						/>
-						<button id="btn" type="submit" disabled={!inputValue}>
-							Add
-						</button>
-						&nbsp;&nbsp;
-						<button id="btn" onClick={handleClear}>
-							Clear List
-						</button>
-					</form>
-					<hr />
-				</div>
-			</div>
+  useEffect(() => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const currentDate = new Date();
+    const month = months[currentDate.getMonth()];
+    const day = currentDate.getDate();
+    const year = currentDate.getFullYear();
+    setDate(`${month} ${day}, ${year}`);
+  }, []);
 
-			<div className="row">
-				<div className="col todo-section">
-					<h3>To Do</h3>
-					{items.map((item) => (
-						<ToDoItem
-							key={item.id}
-							id={item.id}
-							text={item.text}
-							onDelete={handleDelete}
-							onEdit={handleEdit}
-						/>
-					))}
-				</div>
-			</div>
-		</div>
-	);
+  // This is the end of the date
+
+  // This  is the start of the time code
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+  // This  is the end of the time code
+
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <h3>
+            {date} | {time.toLocaleTimeString()}
+          </h3>
+
+          <hr />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col">
+          <form className="add-todo-form" onSubmit={handleSubmit}>
+            <input
+              name="item"
+              placeholder=" Add new to do... "
+              className="todo-input-form"
+              onChange={(e) => setInputValue(e.target.value)}
+              ref={inputRef}
+              value={inputValue}
+            />
+            <button id="btn" type="submit" disabled={!inputValue}>
+              Add
+            </button>
+            &nbsp;&nbsp;
+            <button id="btn" onClick={handleClear}>
+              Clear List
+            </button>
+          </form>
+          <hr />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col todo-section">
+          <h3>To Do</h3>
+          {items.map((item) => (
+            <ToDoItem
+              key={item.id}
+              id={item.id}
+              text={item.text}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function ToDoItem({ id, text, onDelete, onEdit }) {
-	const [isEditing, setIsEditing] = useState(false);
-	const [newText, setNewText] = useState(text);
-	const [isChecked, setIsChecked] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newText, setNewText] = useState(text);
+  const [isChecked, setIsChecked] = useState(false);
 
-	function handleSave() {
-		onEdit(id, newText);
-		setIsEditing(false);
-	}
+  
 
-	function handleChange(event) {
-		setIsChecked(event.target.checked);
-	}
+  function handleSave() {
+    onEdit(id, newText);
+    setIsEditing(false);
+  }
 
-	function Table() {
-		return (
-			<div className="table">
+  function Table(props) {
+    const [selectedUser, setSelectedUser] = useState("");
+    const [selectedStatus, setSelectedStatus] = useState("");
+
+    const { users, status } = props;
+
+    function handleChange(event) {
+      setIsChecked(event.target.checked);
+    }
+    function handleUserSelectChange(event) {
+      setSelectedUser(event.target.value);
+    }
+    
+    function handleStatusSelectChange(event) {
+      setSelectedStatus(event.target.value);
+    }
+
+    return (
+      <table className="table">
         <th>
-        <input
-					type="checkbox"
-					checked={isChecked}
-					onChange={handleChange}
-					id="todo-checkbox"
-				/>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleChange}
+            id="todo-checkbox"
+          />
         </th>
-				<td className="todo">
-					<span className="todo-text" onClick={() => setIsEditing(true)}>
-						{text}
-					</span>
-					{/* <h6 className="timestamp">{time}</h6> */}
-				</td>&nbsp;&nbsp;
+        <td className="todo">
+          <span className="todo-text" onClick={() => setIsEditing(true)}>
+            {text}
+          </span>
+        </td>
+        &nbsp;&nbsp;
+        <label htmlFor="dropdown1">
+          <select
+            value={selectedUser}
+            onChange={handleUserSelectChange}
+            className="dropdown1"
+          >
+            <option value="">Select user...</option>
+            {users.map((user) => (
+              <option key={user.id} value={user.name}>
+                {user.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        &nbsp;&nbsp;
+        <label htmlFor="dropdown2">
+          <select
+            value={selectedStatus}
+            onChange={handleStatusSelectChange}
+            className="dropdown2"
+          >
+             <option value="">Select status...</option>
+            {status.map((status) => (
+              <option key={status.id} >
+                {status.state}
+              </option>
+            ))}
+          </select>
+        </label>
+      </table>
+    );
+  }
 
-				<td className="user">
-					<label>
-						<select className="dropdown">
-							{users.map((user) => (
-								<option key={user.id} value={user.name}>{user.name}</option>
-							))}
-						</select>
-					</label>&nbsp;&nbsp;
+  const users = [
+    { id: 1, name: "John Doe", email: "johndoe@example.com" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com" },
+    { id: 3, name: "Jim Smith", email: "jimsmith@example.com" },
+    { id: 4, name: "Alice Johnson", email: "alicejohnson@example.com" },
+    { id: 5, name: "Bob Williams", email: "bobwilliams@example.com" },
+    { id: 6, name: "Carol Davis", email: "caroldavis@example.com" },
+    { id: 7, name: "David Brown", email: "davidbrown@example.com" },
+    { id: 8, name: "Emily Wilson", email: "emilywilson@example.com" },
+    { id: 9, name: "Frank Taylor", email: "franktaylor@example.com" },
+    { id: 10, name: "Grace Lee", email: "gracelee@example.com" },
+    { id: 11, name: "Henry Clark", email: "henryclark@example.com" },
+    { id: 12, name: "Isabel Martinez", email: "isabelmartinez@example.com" },
+  ];
 
-					<label>
-						<select className="dropdown">
-							{status.map((status) => (
-								<option key={status.id} value={status.state}>{status.state}</option>
-							))}
-						</select>
-					</label>
-				</td>
-			</div>
-		);
-	}
+  const status = [
+    { id: 1, state: "Stuck" },
+    { id: 2, state: "In Progress" },
+    { id: 3, state: "Done" },
+  ];
 
-	const users = [
-	
-		{ id: 1, name: "John Doe", email: "johndoe@example.com" },
-		{ id: 2, name: "Jane Doe", email: "janedoe@example.com" },
-		{ id: 3, name: "Jim Smith", email: "jimsmith@example.com" },
-		{ id: 4, name: "Alice Johnson", email: "alicejohnson@example.com" },
-		{ id: 5, name: "Bob Williams", email: "bobwilliams@example.com" },
-		{ id: 6, name: "Carol Davis", email: "caroldavis@example.com" },
-		{ id: 7, name: "David Brown", email: "davidbrown@example.com" },
-		{ id: 8, name: "Emily Wilson", email: "emilywilson@example.com" },
-		{ id: 9, name: "Frank Taylor", email: "franktaylor@example.com" },
-		{ id: 10, name: "Grace Lee", email: "gracelee@example.com" },
-		{ id: 11, name: "Henry Clark", email: "henryclark@example.com" },
-		{ id: 12, name: "Isabel Martinez", email: "isabelmartinez@example.com" },
-	];
+  //   useEffect(() => {
+  //     console.table(users);
+  //     console.table(status);
+  //   }, [users, status]);
 
-	const status = [
-		{ id: 1, state: "Not Started" },
-		{ id: 2, state: "In Progress" },
-		{ id: 3, state: "Done" },
-	];
-
-  useEffect(() => {
-    console.table(users);
-    console.table(status);
-  }, []);
-
- 
-
-	if (isEditing) {
-		return (
+  if (isEditing) {
+    return (
       <div className="todo-table-grid">
-			<div className="todo-edit">
-				<input
-					className="editIteminput"
-					value={newText}
-					onChange={(e) => setNewText(e.target.value)}
-				/>
-				<button onClick={handleSave}>Save</button>
-				{"  "}
-				<button onClick={() => onDelete(id)}>Delete</button>
-			</div>
+        <div className="todo-edit">
+          <input
+            className="editIteminput"
+            value={newText}
+            onChange={(e) => setNewText(e.target.value)}
+          />
+          <button onClick={handleSave}>Save</button>
+          {"  "}
+          <button onClick={() => onDelete(id)}>Delete</button>
+        </div>
       </div>
-		);
-	}
+    );
+  }
 
-	return (
-		<div className="todo-tablegrid">
-			<label htmlFor="checkbox" className={isChecked ? "todo-text-strike" : ""}>
-				<Table />
-			</label>
-		</div>
-	);
+  return (
+    <div className="todo-tablegrid">
+      <label htmlFor="checkbox" className={isChecked ? "todo-text-strike" : ""}>
+        <Table users={users} status={status} />
+      </label>
+    </div>
+  );
 
-	// test extra code
+  // test extra code
 }
 
 export default ToDoList;
