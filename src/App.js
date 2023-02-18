@@ -162,10 +162,11 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
     function handleChange(event) {
       setIsChecked(event.target.checked);
     }
+
     function handleUserSelectChange(event) {
       setSelectedUser(event.target.value);
     }
-    
+
     function handleStatusSelectChange(event) {
       setSelectedStatus(event.target.value);
     }
@@ -207,14 +208,20 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
             onChange={handleStatusSelectChange}
             className="dropdown2"
           >
-             <option value="">Select status...</option>
+            <option value="">Select status...</option>
             {status.map((status) => (
-              <option key={status.id} >
-                {status.state}
-              </option>
+              <option key={status.id}>{status.state}</option>
             ))}
           </select>
         </label>
+        &nbsp;&nbsp;
+        {isEditing ? (
+          <button onClick={handleSave}>Save</button>
+        ) : (
+          <button onClick={() => setIsEditing(true)}>Edit</button>
+        )}
+        &nbsp;&nbsp;
+        <button onClick={() => onDelete(id)}>Delete</button>
       </table>
     );
   }

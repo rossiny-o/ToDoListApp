@@ -81,14 +81,17 @@ h3{
 .table {
   display: flex;
   /* margin-left: 1rem; */
-	outline: 1px dashed rgb(35, 22, 220);
+	/* outline: 1px dashed rgb(35, 22, 220); */
   padding: .4rem;
+  border-radius: .5rem;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
 }
 
 .todo {
 	padding-right: 1em;
-  outline: 0.3px solid brown;
+  /* outline: 0.3px solid brown; */
   margin-right: auto;
+  font-style: italic;
 	/* background-color: aquamarine; */
   align-items: center;
 }
@@ -97,8 +100,9 @@ h3{
 
 .dropdown1, .dropdown2{
   font-size: small;
-  z-index: 9999;
-  outline: 0.3px solid brown;
+  border: none;
+  /* z-index: 9999; */
+  /* outline: 0.3px solid brown; */
   padding: 0.5rem 1rem;
 
 }
@@ -109,8 +113,7 @@ h3{
   height: 15px;
   margin-top: 10px;
 	margin-right: 1rem;
-	background-color: red;
-  outline: 1px solid rgb(220, 22, 22);
+  /* outline: 1px solid rgb(220, 22, 22); */
 }
 .todo-text {
 	font-size: small;
