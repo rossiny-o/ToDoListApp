@@ -73,17 +73,9 @@ h3{
 }
 
 
-.todo-table-grid {
-	display: flex;
-	justify-content: flex-start;
-	outline: 1px solid rgb(220, 22, 22);
-  background-color: white;
-  border-radius: 2rem;
- 
-}
-
-.table {
+.tabe {
   display: flex;
+  flex-direction: row;
   /* margin-left: 1rem; */
 	/* outline: 1px dashed rgb(35, 22, 220); */
   padding: .4rem;
@@ -92,12 +84,13 @@ h3{
 }
 
 .todo {
+  display: flex;
 	padding-right: 1em;
+  margin: .4rem;
   /* outline: 0.3px solid brown; */
-  margin-right: auto;
-  font-style: italic;
-	/* background-color: aquamarine; */
-  align-items: center;
+  font-style: italic; 
+	background-color: aquamarine;
+  /* align-items: center; */
 }
 
 /* .user{} */
@@ -105,7 +98,7 @@ h3{
 .dropdown1, .dropdown2{
   font-size: 15px;
   border: 0.3px solid brown;
-  background-color: blueviolet;
+  background-color: rgb(187, 172, 201);
   
   /* z-index: 9999; */
   /* outline: 0.3px solid brown; */
