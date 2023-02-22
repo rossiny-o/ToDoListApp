@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+
 export function StatusDropdown() {
     const [selectedStatus, setSelectedStatus] = useState("");
   
@@ -9,17 +10,20 @@ export function StatusDropdown() {
   
     const status = [
       { id: 1, state: "Stuck" },
-      { id: 2, state: "In Progress" },
-      { id: 3, state: "Done" },
+      { id: 2, state: "In Progress" }
     ];
+
+   
+
   
     return (
       <div>
-        <label htmlFor="dropdown1">
+        <label htmlFor="dropdown1" className={selectedStatus === "Done" ? "todo-text-strike" : ""}>
           <select
             value={selectedStatus}
             onChange={handleStatusSelectChange}
             className="dropdown1"
+            id="dropdown-status"
           >
             <option value="">Select status...</option>
             {status.map((status) => (

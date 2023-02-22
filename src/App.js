@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import { UserDropdown } from "./components/userdropdown";
 import { StatusDropdown } from "./components/statusdropdown";
-import { PencilFill } from "react-bootstrap-icons";
+import { PencilFill, Send, SendFill, Trash3Fill } from "react-bootstrap-icons";
 
 function ToDoList() {
   const [items, setItems] = useState([]);
@@ -133,6 +133,8 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
   const [newText, setNewText] = useState(text);
   const [isChecked, setIsChecked] = useState(false);
 
+  const [selectedStatus, setSelectedStatus] = useState("");
+
   function handleChange(event) {
     setIsChecked(event.target.checked);
   }
@@ -153,16 +155,20 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
             value={newText}
             onChange={(e) => setNewText(e.target.value)}
           />
-          <button onClick={handleSave}>Save</button>
-          {"  "}
-          <button onClick={() => onDelete(id)}>Delete</button>
+          &nbsp;&nbsp;
+          <span onClick={handleSave}><SendFill className="saveicon-color"/></span>
+          &nbsp;&nbsp;
+          <span onClick={() => onDelete(id)}><Trash3Fill className="trashicon-color"/></span>
+          
         </div>
+
+        
       </div>
     );
   }
 
   return (
-    <>
+    <label htmlFor="todo" className={isChecked ? "todo-text-strike" : ""} >
       <div className="todo">
         <div>
           <input
@@ -177,22 +183,26 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
           {text}
         </h3>
 
-        <div>
+        <div className="button-group">
           {isEditing ? (
-            <button onClick={handleSave}>Save</button>
+           <span onClick={handleSave}><SendFill className="saveicon-color"/></span>
           ) : (
-            <button onClick={() => setIsEditing(true)}>Edit</button>
+            <span onClick={() => setIsEditing(true)}><PencilFill className="pencilicon-color" /></span>
           )}
           &nbsp;&nbsp;
-          <button onClick={() => onDelete(id)}>Delete</button>
+          <span onClick={() => onDelete(id)}><Trash3Fill className="trashicon-color"/></span>
         </div>
 
-        <UserDropdown/>
-        <StatusDropdown/>
+        <div className="dropdown-group">
+          <UserDropdown />
+          <StatusDropdown />
+        </div>
+
+        
 
         
       </div>
-    </>
+    </label>
   );
 }
 
