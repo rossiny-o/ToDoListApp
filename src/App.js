@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
+import { UserDropdown } from "./components/userdropdown";
+import { StatusDropdown } from "./components/statusdropdown";
+import { PencilFill } from "react-bootstrap-icons";
 
 function ToDoList() {
   const [items, setItems] = useState([]);
@@ -110,7 +113,7 @@ function ToDoList() {
         <div className="col todo-section">
           <h3>To Do</h3>
           {items.map((item) => (
-            <ToDoIteme
+            <ToDoItem
               key={item.id}
               id={item.id}
               text={item.text}
@@ -124,120 +127,22 @@ function ToDoList() {
   );
 }
 
+
 function ToDoItem({ id, text, onDelete, onEdit }) {
   const [isEditing, setIsEditing] = useState(false);
   const [newText, setNewText] = useState(text);
   const [isChecked, setIsChecked] = useState(false);
+
+  function handleChange(event) {
+    setIsChecked(event.target.checked);
+  }
 
   function handleSave() {
     onEdit(id, newText);
     setIsEditing(false);
   }
 
-  function Table() {
-    const [selectedUser, setSelectedUser] = useState("");
-    const [selectedStatus, setSelectedStatus] = useState("");
 
-    const users = [
-      { id: 1, name: "John Doe", email: "johndoe@example.com" },
-      { id: 2, name: "Jane Doe", email: "janedoe@example.com" },
-      { id: 3, name: "Jim Smith", email: "jimsmith@example.com" },
-      { id: 4, name: "Alice Johnson", email: "alicejohnson@example.com" },
-      { id: 5, name: "Bob Williams", email: "bobwilliams@example.com" },
-      { id: 6, name: "Carol Davis", email: "caroldavis@example.com" },
-      { id: 7, name: "David Brown", email: "davidbrown@example.com" },
-      { id: 8, name: "Emily Wilson", email: "emilywilson@example.com" },
-      { id: 9, name: "Frank Taylor", email: "franktaylor@example.com" },
-      { id: 10, name: "Grace Lee", email: "gracelee@example.com" },
-      { id: 11, name: "Henry Clark", email: "henryclark@example.com" },
-      { id: 12, name: "Isabel Martinez", email: "isabelmartinez@example.com" },
-    ];
-
-    const status = [
-      { id: 1, state: "Stuck" },
-      { id: 2, state: "In Progress" },
-      { id: 3, state: "Done" },
-    ];
-
-    function handleChange(event) {
-      setIsChecked(event.target.checked);
-    }
-
-    function handleUserSelectChange(event) {
-      setSelectedUser(event.target.value);
-    }
-
-    function handleStatusSelectChange(event) {
-      setSelectedStatus(event.target.value);
-    }
-
-    return (
-      <div className="table">
-        <div>
-          <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={handleChange}
-            id="todo-checkbox"
-          />
-        </div>
-        <div className="todo">
-          <span className="todo-text" onClick={() => setIsEditing(true)}>
-            {text}
-          </span>
-        </div>
-        {/* &nbsp;&nbsp; */}
-        <div>
-          <label htmlFor="dropdown1">
-            <select
-              value={selectedUser}
-              onChange={handleUserSelectChange}
-              className="dropdown1"
-            >
-              <option value="">Select user...</option>
-              {users.map((user) => (
-                <option key={user.id} value={user.name}>
-                  {user.name}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        {/* &nbsp;&nbsp; */}
-        <div>
-          <label htmlFor="dropdown2">
-            <select
-              value={selectedStatus}
-              onChange={handleStatusSelectChange}
-              className="dropdown2"
-            >
-              <option value="">Select status...</option>
-              {status.map((status) => (
-                <option key={status.id} value={status.state}>
-                  {status.state}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        &nbsp;&nbsp;
-        <div>
-          {isEditing ? (
-            <button onClick={handleSave}>Save</button>
-          ) : (
-            <button onClick={() => setIsEditing(true)}>Edit</button>
-          )}
-          &nbsp;&nbsp;
-          <button onClick={() => onDelete(id)}>Delete</button>
-        </div>
-      </div>
-    );
-  }
-
-  //   useEffect(() => {
-  //     console.table(users);
-  //     console.table(status);
-  //   }, [users, status]);
 
   if (isEditing) {
     return (
@@ -257,110 +162,37 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
   }
 
   return (
-    <div className="todo-tablegrid">
-      <label htmlFor="checkbox" className={isChecked ? "todo-text-strike" : ""}>
-        {/* <Table /> */}
-      </label>
-    </div>
-  );
-
-  // test extra code
-}
-
-function ToDoIteme({ id, text, onDelete, onEdit }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [newText, setNewText] = useState(text);
-  const [isChecked, setIsChecked] = useState(false);
-
-  function handleSave() {
-    onEdit(id, newText);
-    setIsEditing(false);
-  }
-
-  return (
     <>
       <div className="todo">
+        <div>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleChange}
+            id="todo-checkbox"
+          />
+        </div>
+
         <h3 className="todo-text" onClick={() => setIsEditing(true)}>
           {text}
         </h3>
-       
+
+        <div>
+          {isEditing ? (
+            <button onClick={handleSave}>Save</button>
+          ) : (
+            <button onClick={() => setIsEditing(true)}>Edit</button>
+          )}
+          &nbsp;&nbsp;
+          <button onClick={() => onDelete(id)}>Delete</button>
+        </div>
+
+        <UserDropdown/>
+        <StatusDropdown/>
+
+        
       </div>
     </>
-  );
-}
-
-function UserDropdown() {
-  const [selectedUser, setSelectedUser] = useState("");
-
-  function handleUserSelectChange(event) {
-    setSelectedUser(event.target.value);
-  }
-
-  const users = [
-    { id: 1, name: "John Doe", email: "johndoe@example.com" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com" },
-    { id: 3, name: "Jim Smith", email: "jimsmith@example.com" },
-    { id: 4, name: "Alice Johnson", email: "alicejohnson@example.com" },
-    { id: 5, name: "Bob Williams", email: "bobwilliams@example.com" },
-    { id: 6, name: "Carol Davis", email: "caroldavis@example.com" },
-    { id: 7, name: "David Brown", email: "davidbrown@example.com" },
-    { id: 8, name: "Emily Wilson", email: "emilywilson@example.com" },
-    { id: 9, name: "Frank Taylor", email: "franktaylor@example.com" },
-    { id: 10, name: "Grace Lee", email: "gracelee@example.com" },
-    { id: 11, name: "Henry Clark", email: "henryclark@example.com" },
-    { id: 12, name: "Isabel Martinez", email: "isabelmartinez@example.com" },
-  ];
-
-  return (
-    <div>
-      <label htmlFor="dropdown1">
-        <select
-          value={selectedUser}
-          onChange={handleUserSelectChange}
-          className="dropdown1"
-        >
-          <option value="">Select user...</option>
-          {users.map((user) => (
-            <option key={user.id} value={user.name}>
-              {user.name}
-            </option>
-          ))}
-        </select>
-      </label>
-    </div>
-  );
-}
-
-function StatusDropdown() {
-  const [selectedStatus, setSelectedStatus] = useState("");
-
-  function handleStatusSelectChange(event) {
-    setSelectedStatus(event.target.value);
-  }
-
-  const status = [
-    { id: 1, state: "Stuck" },
-    { id: 2, state: "In Progress" },
-    { id: 3, state: "Done" },
-  ];
-
-  return (
-    <div>
-      <label htmlFor="dropdown1">
-        <select
-          value={selectedStatus}
-          onChange={handleStatusSelectChange}
-          className="dropdown1"
-        >
-          <option value="">Select status...</option>
-          {status.map((status) => (
-            <option key={status.id} value={status.state}>
-              {status.state}
-            </option>
-          ))}
-        </select>
-      </label>
-    </div>
   );
 }
 
