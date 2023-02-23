@@ -76,6 +76,7 @@ function ToDoList() {
 
   return (
     <div className="container">
+      <div className="container-border">
       <div className="row">
         <div className="col">
           <h3>
@@ -97,11 +98,11 @@ function ToDoList() {
               ref={inputRef}
               value={inputValue}
             />
-            <button id="btn" type="submit" disabled={!inputValue}>
+            <button id="add-btn" type="submit" disabled={!inputValue}>
               Add
             </button>
             &nbsp;&nbsp;
-            <button id="btn" onClick={handleClear}>
+            <button id="clear-btn" onClick={handleClear}>
               Clear List
             </button>
           </form>
@@ -120,13 +121,16 @@ function ToDoList() {
               onDelete={handleDelete}
               onEdit={handleEdit}
             />
-          ))}
+            ))}
+            
         </div>
       </div>
+      </div>
+
+      
     </div>
   );
 }
-
 
 function ToDoItem({ id, text, onDelete, onEdit }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -144,11 +148,9 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
     setIsEditing(false);
   }
 
-
-
   if (isEditing) {
     return (
-      <div className="todo-table-grid">
+      <div className="todo">
         <div className="todo-edit">
           <input
             className="editIteminput"
@@ -156,19 +158,20 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
             onChange={(e) => setNewText(e.target.value)}
           />
           &nbsp;&nbsp;
-          <span onClick={handleSave}><SendFill className="saveicon-color"/></span>
+          <span onClick={handleSave}>
+            <SendFill className="saveicon-color" />
+          </span>
           &nbsp;&nbsp;
-          <span onClick={() => onDelete(id)}><Trash3Fill className="trashicon-color"/></span>
-          
+          <span onClick={() => onDelete(id)}>
+            <Trash3Fill className="trashicon-color" />
+          </span>
         </div>
-
-        
       </div>
     );
   }
 
   return (
-    <label htmlFor="todo" className={isChecked ? "todo-text-strike" : ""} >
+    <label htmlFor="todo" className={isChecked ? "todo-text-strike" : ""}>
       <div className="todo">
         <div>
           <input
@@ -179,29 +182,33 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
           />
         </div>
 
-        <h3 className="todo-text" onClick={() => setIsEditing(true)}>
+        <h4 className="todo-text" onClick={() => setIsEditing(true)}>
           {text}
-        </h3>
+        </h4>
+
+        
 
         <div className="button-group">
           {isEditing ? (
-           <span onClick={handleSave}><SendFill className="saveicon-color"/></span>
+            <span onClick={handleSave}>
+              <SendFill className="saveicon-color" />
+            </span>
           ) : (
-            <span onClick={() => setIsEditing(true)}><PencilFill className="pencilicon-color" /></span>
+            <span onClick={() => setIsEditing(true)}>
+              <PencilFill className="pencilicon-color" />
+            </span>
           )}
+          <div className="dropdown-group">
+            <UserDropdown />
+            <StatusDropdown />
+          </div>
           &nbsp;&nbsp;
-          <span onClick={() => onDelete(id)}><Trash3Fill className="trashicon-color"/></span>
+          <span onClick={() => onDelete(id)}>
+            <Trash3Fill className="trashicon-color" />
+          </span>
         </div>
-
-        <div className="dropdown-group">
-          <UserDropdown />
-          <StatusDropdown />
-        </div>
-
-        
-
-        
       </div>
+        
     </label>
   );
 }

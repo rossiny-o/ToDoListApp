@@ -4,34 +4,36 @@ body{
   align-items:center;
   justify-content: center;
   min-height: 100vh;
-  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-/* *{
-  outline: 1px dashed red;
-} */
 
 
 .container {
 	padding: 1em;
 	background-color:#181B34;
-  /* border: 3px dashed black; */
   border-radius: 20px;
   color: #D5D8DF;
+  /* border: 3px dashed black; */
    
+}
+
+.container-border{
+  padding-top: 1rem;
+  padding-bottom: none;
+  padding: auto;
+  border: 2px dashed rgb(213, 216, 223, 0.3);
+  border-radius: 20px ;
 }
 
 
 /* start of second row: Input form for new todo */
 
 .add-todo-form {
-	/* outline: 0.5px solid red; */
   padding-left: 0.3rem;
   padding-right: 0.3rem;
 	display: flex;
 	flex-direction: row;
- 
- 
+	/* outline: 0.5px solid red; */
 }
 
 .todo-input-form {
@@ -50,11 +52,19 @@ body{
   margin-right: 1rem;
 }
 
-button {
-  background-color:#D5D8DF;
+#add-btn, #clear-btn {
+  border-radius: .5rem;
   padding: 0.1rem 0.4rem;
-
 }
+
+#add-btn{
+  background-color:#11DD80;
+}
+
+#clear-btn{
+  background-color:#F74875 ;
+}
+
 
 /* end of second row */
 
@@ -75,15 +85,19 @@ h3{
 }
 
 .todo-edit{
-  margin-left: .3rem;
-  padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.3rem;
 }
 
 .todo {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-	padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+	padding-top: .3rem;
+	padding-bottom: .3rem;
   margin: .4rem;
   border: 0.3px solid #D5D8DF;
   border-radius: .5rem;
@@ -135,6 +149,8 @@ h3{
   /* outline: 1px solid rgb(220, 22, 22); */
 }
 .todo-text {
+  /* margin-left: auto; */
+  margin-right: auto;
 	font-size: small;
 	font-weight: bold;
 }
