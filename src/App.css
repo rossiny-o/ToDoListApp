@@ -46,10 +46,10 @@ body{
 }
 
 .button-group {
-	/* outline: 2px dashed rgb(35, 22, 220); */
   display: flex;
   margin-left: 1rem;
   margin-right: 1rem;
+	/* outline: 2px dashed rgb(35, 22, 220); */
 }
 
 #add-btn, #clear-btn {
@@ -76,12 +76,12 @@ h3{
 }
 
 .todo-section{
-  /* background: rgba(128, 255, 0, 0.312); */
   display: flex;
   flex-direction: column;
-  /* border: 2px dashed #D5D8DF; */
   margin: 1rem;
   padding: 1rem;
+  /* border: 2px dashed #D5D8DF; */
+  /* background: rgba(128, 255, 0, 0.312); */
 }
 
 .todo-edit{
@@ -99,10 +99,9 @@ h3{
 	padding-top: .3rem;
 	padding-bottom: .3rem;
   margin: .4rem;
-  border: 0.3px solid #D5D8DF;
+  border: 0.3px solid rgb(213, 216, 223, 0.3);
   border-radius: .5rem;
   font-style: italic; 
-  /* align-items: center; */
 }
 
 .trashicon-color{
@@ -120,24 +119,22 @@ h3{
   color: #11DD80;
 }
 
-/* .user{} */
+
 .dropdown-group{
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .dropdown1, .dropdown2{
   margin: .3rem;
-  width: 6rem;
   font-size: .8rem;
   background-color: #181B34;
   border: none;
   color: #D5D8DF;
 
-  
-  /* z-index: 9999; */
-  /* outline: 0.3px solid brown; */
-  /* padding: 0.5rem 1rem; */
+}
 
+option{
+  font-size: 15px;
 }
 
 
@@ -161,29 +158,11 @@ h3{
 }
 
 
-option{
-  font-size: 15px;
-}
-
-/* --------- --------- --------- --------- --------- --------- --------- --------- */
-
-/* style for ToDo Item */
-
-/* .list-items:hover{
-  transform: translateY(.1rem);
-} */
-
-/* .todo-edit {
-  display: flex;
-  flex-wrap: nowrap;
-  padding: 0.2rem;
-  margin-right: 0.2rem;
-  font-size: 0.8rem;
-} */
-
 .editIteminput {
 	width: 350px;
 	padding: 0.2rem;
 	margin-right: 0.2rem;
 	font-size: 0.8rem;
 }
+
+

@@ -1,13 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./App.css";
+
 import { UserDropdown } from "./components/userdropdown";
 import { StatusDropdown } from "./components/statusdropdown";
-import { PencilFill, Send, SendFill, Trash3Fill } from "react-bootstrap-icons";
+import { PencilFill,SendFill, Trash3Fill } from "react-bootstrap-icons";
 
 function ToDoList() {
   const [items, setItems] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef(null);
+
+  // this is to save the todo array itmes in the local storage to prevent it from disappearing upon reload
+  useEffect(() => {
+    const data = window.localStorage.getItem("items");
+    if (data !== null) setItems(JSON.parse(data));
+  },[])
+
+  useEffect(() => {
+    window.localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
+
+
+  // end of local storage
+
 
   function handleDelete(id) {
     setItems(items.filter((item) => item.id !== id));
@@ -137,7 +151,6 @@ function ToDoItem({ id, text, onDelete, onEdit }) {
   const [newText, setNewText] = useState(text);
   const [isChecked, setIsChecked] = useState(false);
 
-  const [selectedStatus, setSelectedStatus] = useState("");
 
   function handleChange(event) {
     setIsChecked(event.target.checked);
