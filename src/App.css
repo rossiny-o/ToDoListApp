@@ -171,6 +171,7 @@ option{
 @media only screen and (max-width: 600px) {
   body{
     background-color:#181B34;
+    margin: auto;
   }
   .container {
     padding: 1em;
@@ -178,6 +179,7 @@ option{
     border-radius: 20px;
     color: #D5D8DF;
     min-height: 100vh;
+    margin: auto;
 
   }
   .container-border{
