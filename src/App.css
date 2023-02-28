@@ -187,12 +187,13 @@ option{
   }
 
   .todo-input-form{
-    width: 325px;
+    width: 300px;
+    margin: 0;
 
   }
 
   .editIteminput {
-    width: 320px;
+    width: 300px;
     padding: 0.2rem;
     margin-right: 0.2rem;
     font-size: 0.8rem;
