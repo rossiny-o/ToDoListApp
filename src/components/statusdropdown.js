@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 
 export function StatusDropdown() {
@@ -13,7 +13,6 @@ export function StatusDropdown() {
       { id: 2, state: "In Progress" }
     ];
 
-   
 
   
     return (

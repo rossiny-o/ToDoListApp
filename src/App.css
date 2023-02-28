@@ -21,7 +21,7 @@ body{
   padding-top: 1rem;
   padding-bottom: none;
   padding: auto;
-  border: 2px dashed rgb(213, 216, 223, 0.3);
+  /* border: 2px dashed rgb(213, 216, 223, 0.3); */
   border-radius: 20px ;
 }
 
@@ -29,36 +29,35 @@ body{
 /* start of second row: Input form for new todo */
 
 .add-todo-form {
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
 	display: flex;
 	flex-direction: row;
+  justify-content: center;
 	/* outline: 0.5px solid red; */
 }
 
 .todo-input-form {
-	outline: 1px solid black;
 	width: 350px;
-  margin-left: 0.5rem;
-	margin-right: 0.5rem;
+  margin-left: auto;
+	margin-right:auto;
 	padding: 0.5rem;
 	font-size: 0.8rem;
 }
 
 .button-group {
   display: flex;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left:.3rem;
+  margin-right: .3rem;
 	/* outline: 2px dashed rgb(35, 22, 220); */
 }
 
 #add-btn, #clear-btn {
   border-radius: .5rem;
   padding: 0.1rem 0.4rem;
+ 
 }
 
 #add-btn{
-  background-color:#11DD80;
+  background-color:rgb(17, 221, 128);
 }
 
 #clear-btn{
@@ -78,8 +77,8 @@ h3{
 .todo-section{
   display: flex;
   flex-direction: column;
-  margin: 1rem;
-  padding: 1rem;
+  margin: auto;
+  padding: auto;
   /* border: 2px dashed #D5D8DF; */
   /* background: rgba(128, 255, 0, 0.312); */
 }
@@ -94,14 +93,22 @@ h3{
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-	padding-top: .3rem;
-	padding-bottom: .3rem;
-  margin: .4rem;
-  border: 0.3px solid rgb(213, 216, 223, 0.3);
+  margin-bottom: .4rem;
+  border: 0.3px dashed rgb(17, 221, 128, 0.3);
   border-radius: .5rem;
   font-style: italic; 
+}
+
+.editIteminput {
+	width: 350px;
+	padding: 0.2rem;
+	margin-right: 0.2rem;
+	font-size: 0.8rem;
+}
+
+hr{
+  opacity: .3;
+  border: dashed 1px;
 }
 
 .trashicon-color{
@@ -153,16 +160,40 @@ option{
 }
 
 .todo-text-strike {
-	font-style: bold;
-	opacity: 0.5;
+	opacity: 0.3;
 }
 
 
-.editIteminput {
-	width: 350px;
-	padding: 0.2rem;
-	margin-right: 0.2rem;
-	font-size: 0.8rem;
+
+
+/* Media Queeries */
+
+@media only screen and (max-width: 600px) {
+  body{
+    background-color:#181B34;
+  }
+  .container {
+    padding: 1em;
+    background-color:#181B34;
+    border-radius: 20px;
+    color: #D5D8DF;
+    min-height: 100vh;
+
+  }
+  .container-border{
+    border: none;
+  }
+
+  .todo-input-form{
+    width: 325px;
+
+  }
+
+  .editIteminput {
+    width: 320px;
+    padding: 0.2rem;
+    margin-right: 0.2rem;
+    font-size: 0.8rem;
+  }
+
 }
-
-

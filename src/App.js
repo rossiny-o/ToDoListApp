@@ -112,12 +112,13 @@ function ToDoList() {
               ref={inputRef}
               value={inputValue}
             />
+            &nbsp;&nbsp;
             <button id="add-btn" type="submit" disabled={!inputValue}>
               Add
             </button>
             &nbsp;&nbsp;
             <button id="clear-btn" onClick={handleClear}>
-              Clear List
+              Clear
             </button>
           </form>
           <hr />
