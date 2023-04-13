@@ -2,6 +2,11 @@
 
 Welcome to my To-Do List App! This app was designed to help you manage your tasks and stay organized throughout the day.
 
+
+# Getting Started
+
+To view the live demo of the Baiart Store website, simply navigate to  https://rossiny-o.github.io/ToDoListApp in your web browser.
+
 # Features
 
 User-friendly interface: the app features a clean and intuitive design, making it easy to add, edit, and delete tasks.
